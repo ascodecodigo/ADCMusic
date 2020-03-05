@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "buefy": "^0.8.0",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
@@ -17,6 +19,7 @@
     "@vue/cli-plugin-router": "^4.2.0",
     "@vue/cli-plugin-vuex": "^4.2.0",
     "@vue/cli-service": "^4.2.0",
+    "vue-cli-plugin-buefy": "^0.3.7",
     "vue-template-compiler": "^2.6.11"
   }
 }
