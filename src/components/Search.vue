@@ -25,9 +25,10 @@
       </p>
     </div>
     <div class="columns is-multiline">
-      <!-- user un v-for -->
-      <div class="column is-one-quarters">
+      <!-- usar v-for -->
+      <div v-for="track in tracks" :key="track.id" class="column is-one-quarters">
         <!-- Componente TrackDetail -->
+        <track-detail :track="track"></track-detail>
       </div>
     </div>
   </section>
@@ -42,12 +43,14 @@ export default {
       tracks: []
     }
   },
+  components: {
+    TrackDetail: () => import('./TrackDetail')
+  },
   methods: {
     search() {
       searchTrack(this.searchQuery)
       .then(res => res.data.tracks.items) // return ..
       .then(tracks => {
-        console.log(tracks)
         this.tracks = tracks
       })
     }
