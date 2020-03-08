@@ -1,7 +1,7 @@
 <template>
    <div class="card">
       <div class="card-image">
-         <figure class="image is-1by1">
+         <figure @click="toTrack(track)" class="image is-1by1">
             <img :src="track.album.images[0].url" alt="Placeholder image" />
          </figure>
       </div>
@@ -13,15 +13,15 @@
                </figure>
             </div>
             <div class="media-content">
-               <strong><a class="title is-6">{{ track.name }}</a></strong>
+               <strong><a @click="toTrack(track)" class="title is-6">{{ track.name }}</a></strong>
                -
                <a class="subtitle is-6">{{ track.artists[0].name }}</a>
-               <p class="subtitle is-6">{{ track.duration_ms }}</p>
+               <p class="subtitle is-6">{{ track.duration_ms | msToMm }}</p>
             </div>
          </div>
       </div>
       <footer class="card-footer">
-         <a id="play" class="card-footer-item button is-success is-inverted">
+         <a id="play" @click="selectTrack(track)" class="card-footer-item button is-success is-inverted">
          <span class="icon">
          <i class="fa fa-play"></i>
          </span>
@@ -38,7 +38,9 @@
 </template>
 
 <script>
+import { trackMixin } from '@/mixins/track'
 export default {
-   props: ['track']
+   props: ['track'],
+   mixins: [trackMixin]
 }
 </script>

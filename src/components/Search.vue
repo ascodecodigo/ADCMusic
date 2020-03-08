@@ -5,6 +5,7 @@
         <input
           class="input is-large"
           v-model="searchQuery"
+          @keyup.enter="search"
           type="text"
           placeholder="Search songs..."
         />
@@ -24,36 +25,52 @@
         </a>
       </p>
     </div>
+    <p>
+      <!-- <small>{{ searchMessage }}</small><br> -->
+      <small>{{ results | toLocaleString }}</small>
+    </p>
     <div class="columns is-multiline">
       <!-- usar v-for -->
-      <div v-for="track in tracks" :key="track.id" class="column is-one-quarters">
+      <div
+        v-for="track in $store.state.tracks"
+        :key="track.id"
+        class="column is-one-quarters"
+      >
         <!-- Componente TrackDetail -->
-        <track-detail :track="track"></track-detail>
+        <track-detail v-blur="track.preview_url" :track="track"></track-detail>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { searchTrack } from '@/api/track'
 export default {
   data() {
     return {
-      searchQuery: "",
-      tracks: []
+      searchQuery: "rock",
+      results: 0
+    };
+  },
+  computed: {
+    searchMessage() {
+      return `Found: ${this.results.toLocaleString()} results`;
+    }
+  },
+  filters: {
+    toLocaleString(results) {
+      return `Found: ${results.toLocaleString()} results`;
     }
   },
   components: {
-    TrackDetail: () => import('./TrackDetail')
+    TrackDetail: () => import("./TrackDetail")
+  },
+  created() {
+    this.search();
   },
   methods: {
-    search() {
-      searchTrack(this.searchQuery)
-      .then(res => res.data.tracks.items) // return ..
-      .then(tracks => {
-        this.tracks = tracks
-      })
+    async search() {
+      this.results = await this.$store.dispatch("getTracks", this.searchQuery);
     }
   }
-}
+};
 </script>
