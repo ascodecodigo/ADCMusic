@@ -5,6 +5,7 @@
         <div class="container has-text-centered">
           <h1 class="title">ADCMusic</h1>
           <h2 class="subtitle">Canciones que estan Vue-nisimas!!</h2>
+          <Player/>
         </div>
       </div>
     </section>
@@ -17,7 +18,8 @@
 export default {
   name: 'Home',
   components: {
-    Search: () => import('@/components/Search')
+    Search: () => import('@/components/Search'),
+    Player: () => import('@/components/Player')
   }
 }
 </script>
