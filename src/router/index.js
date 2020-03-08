@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/track/:id', // parametros en la ruta
+    name: 'TrackDetail',
+    component: () => import('@/views/Track')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
