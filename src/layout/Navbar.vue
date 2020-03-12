@@ -16,10 +16,10 @@
     <div class="navbar-menu" id="navbarBasicExample">
       <div class="navbar-start"></div>
       <div class="navbar-end">
-        <a class="navbar-item">Home</a>
+        <router-link to="/" tag="a" active-class="is-active" class="navbar-item">Home</router-link>
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-danger">Logout</a>
+            <router-link to="/login" tag="a" class="button is-danger">Logout</router-link>
             <a class="button is-light">Log in</a>
           </div>
         </div>

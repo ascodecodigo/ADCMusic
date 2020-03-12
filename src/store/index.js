@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { searchTrack } from '@/api/track'
+import { searchTrack, getById } from '@/api/track'
 
 Vue.use(Vuex)
 
@@ -21,10 +21,21 @@ export default new Vuex.Store({
     getTracks ({ commit }, q) {
       return new Promise(resolve => {
         searchTrack(q)
-          .then(res => res.data.tracks) // return ..
+          .then(data => data.tracks)
           .then(tracks => {
             commit('SET_TRACKS', tracks.items)
             resolve(tracks.total)
+          })
+      })
+    },
+    getById ({ commit }, id) {
+      return new Promise(resolve => {
+        getById(id)
+          // .then(res => res.data)
+          .then(res => {
+            console.log(res)
+            commit('SET_TRACK', res)
+            resolve()
           })
       })
     }

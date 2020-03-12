@@ -1,22 +1,22 @@
 <template>
-  <section class="section">
-    <!-- importar banner -->
-    <track-detail :track="track"></track-detail>
-  </section>
+    <section v-if="track.name" class="section">
+      <track-card :track="track"></track-card>
+    </section>
 </template>
 
 <script>
 export default {
-  components: {
-    TrackDetail: () => import("@/components/TrackDetail")
-  },
-  created() {
-    console.log(this.$route.params.id);
-  },
   computed: {
-    track() {
-      return this.$store.state.currentTrack;
+    track () {
+      return this.$store.state.currentTrack
     }
+  },
+  created () {
+    if (this.track.name) { return }
+    this.$store.dispatch('getById', this.$route.params.id)
+  },
+  components: {
+    TrackCard: () => import('@/components/TrackDetail')
   }
-};
+}
 </script>
