@@ -52,6 +52,10 @@ const routes = [
   }
 ]
 
+const router = new VueRouter({
+  routes
+})
+
 // guardian para todas las rutas
 router.beforeEach((to, from, next) => {
   // validar en todas las rutas

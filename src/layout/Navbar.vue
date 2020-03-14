@@ -2,9 +2,9 @@
   <nav class="navbar is-right is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <img src="https://imagesadc.s3.amazonaws.com/logos/logohor_bco2.png"
+        <img src="../assets/logos_adc.png"
           width="auto" height="auto">
-        <span class="nav-title"><strong>AscoMusic</strong></span>
+        <!-- <span class="nav-title"><strong>AscoMusic</strong></span> -->
       </a>
       <a class="navbar-burger burger is-active" role="button" aria-label="menu"
         aria-expanded="false" data-target="navbarBasicExample">
