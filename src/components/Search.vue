@@ -32,7 +32,7 @@
     <div class="columns is-multiline">
       <!-- usar v-for -->
       <div
-        v-for="track in $store.state.tracks"
+        v-for="track in tracks"
         :key="track.id"
         class="column is-one-quarters"
       >
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
@@ -52,6 +54,7 @@ export default {
     };
   },
   computed: {
+    ...mapState("tracks", ["tracks", "currentTrack"]),
     searchMessage() {
       return `Found: ${this.results.toLocaleString()} results`;
     }
@@ -69,7 +72,7 @@ export default {
   },
   methods: {
     async search() {
-      this.results = await this.$store.dispatch("getTracks", this.searchQuery);
+      await this.$store.dispatch("tracks/getTracks", this.searchQuery);
     }
   }
 };

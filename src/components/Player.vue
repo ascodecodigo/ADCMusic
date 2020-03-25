@@ -18,7 +18,7 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["currentTrack"])
+    ...mapState("tracks", ["currentTrack"])
   }
 };
 </script>

@@ -53,7 +53,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  base: '/ADCMusic',
+  scrollBehavior: () => ({ y: 0 })
 })
 
 // guardian para todas las rutas

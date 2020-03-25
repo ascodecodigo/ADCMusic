@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "publish": "npm run build && node publish.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "buefy": "^0.8.0",
     "core-js": "^3.6.4",
+    "gh-pages": "^2.2.0",
     "js-cookies": "^1.0.4",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
